@@ -183,7 +183,7 @@ conn.close()
 
 # Note that the syntax for mentions in a tweet is that the username is preceded by an "@" character, e.g. "@umsi" or "@aadl", and cannot contain any punctuation besides underscores -- that's how to determine what user names are mentioned. (e.g. @hello? is just the username "hello", but @programmer_at_umsi is "programmer_at_umsi"). 
 
-#re.match and getting the 0th group from the MatchObject may be useful for you here... reminder: http://stackoverflow.com/questions/15340582/python-extract-pattern-matches
+# re.match and getting the 0th group from the MatchObject may be useful for you here... reminder: http://stackoverflow.com/questions/15340582/python-extract-pattern-matches
 
 # You may assume for this problem that there will be no usernames directly in order, e.g. "@hello@goodbye", only "@hello and @goodbye" for example. We will iterate on this later!
 
@@ -192,12 +192,7 @@ conn.close()
 # If you want to challenge yourself here -- this function definition (what goes under the def statement) CAN be written in one line! Definitely, definitely fine to write it with multiple lines, too, which will be much easier and clearer.
 
 def get_twitter_users(s):
-	regex = r"(\@\w+)"
-	count = re.findall(regex, s)
-	print(count)
-	return count
-
-
+	return {x[1:] for x in (re.findall(r"\@\w+", s))}
 
 #########
 print("*** OUTPUT OF TESTS BELOW THIS LINE ***")
